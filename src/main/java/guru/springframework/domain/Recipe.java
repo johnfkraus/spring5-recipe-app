@@ -1,6 +1,8 @@
 package guru.springframework.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -21,6 +23,10 @@ public class Recipe {
     private Byte[] image;
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    // mappedBy is the property on the child class
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     public Long getId() {
         return id;
