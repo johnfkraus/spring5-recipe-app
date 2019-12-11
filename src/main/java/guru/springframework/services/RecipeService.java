@@ -5,6 +5,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface RecipeService extends CrudService<Recipe, Long> {
-    // Recipe findByLastName(String lastName);
 
 }

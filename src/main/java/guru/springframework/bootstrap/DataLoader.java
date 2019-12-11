@@ -4,7 +4,6 @@ import guru.springframework.domain.*;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -14,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+//@Component
 // public class DataLoader implements CommandLineRunner {
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -77,46 +76,46 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         Category americanCategory = americanCategoryOptional.get();
         Category mexicanCategory = mexicanCategoryOptional.get();
 
-        Recipe recipe1 = new Recipe();
-        recipe1.setDescription("Perfect Guacamole");
-        recipe1.setPrepTime(10);
-        recipe1.setCookTime(23);
-        recipe1.setServings(4);
-        recipe1.setDifficulty(Difficulty.EASY);
-        recipe1.setSources("Simply Recipes");
-        recipe1.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
+        Recipe guacRecipe = new Recipe();
+        guacRecipe.setDescription("Perfect Guacamole");
+        guacRecipe.setPrepTime(10);
+        guacRecipe.setCookTime(23);
+        guacRecipe.setServings(4);
+        guacRecipe.setDifficulty(Difficulty.EASY);
+        guacRecipe.setSources("Simply Recipes");
+        guacRecipe.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
         //recipe1.setDirections("Be careful handling chiles if using. Wash your hands thoroughly after handling and do not touch your eyes or the area near your eyes with your hands for several hours.\n  1 Cut avocado, remove flesh: Cut the avocados in half. Remove seed. Score the inside of the avocado with a blunt knife and scoop out the flesh with a spoon. (See How to Cut and Peel an Avocado.) Place in a bowl.");
-        recipe1.setDirections("Be careful handling chiles if using. Wash your hands thoroughly after handling and do not touch your eyes or the area near your eyes with your hands for several hours.\n  ");
+        guacRecipe.setDirections("Be careful handling chiles if using. Wash your hands thoroughly after handling and do not touch your eyes or the area near your eyes with your hands for several hours.\n  ");
         Notes guacNotes = new Notes();
         guacNotes.setRecipeNotes("Blah");
-        guacNotes.setRecipe(recipe1);
-        recipe1.setNotes(guacNotes);
+        //guacNotes.setRecipe(guacRecipe);
+        guacRecipe.setNotes(guacNotes);
 
-        recipe1.getIngredients().add(new Ingredient("ripe avocados", new BigDecimal(2), eachUom, recipe1 ));
-        recipe1.getIngredients().add(new Ingredient("Kosher salt", new BigDecimal("0.5"), teaspoonUom, recipe1));
-        recipe1.getIngredients().add(new Ingredient("fresh lime juice or lemon juice", new BigDecimal("2"), tablespoonUom, recipe1));
+        guacRecipe.getIngredients().add(new Ingredient("ripe avocados", new BigDecimal(2), eachUom ));
+        guacRecipe.getIngredients().add(new Ingredient("Kosher salt", new BigDecimal("0.5"), teaspoonUom));
+        guacRecipe.getIngredients().add(new Ingredient("fresh lime juice or lemon juice", new BigDecimal("2"), tablespoonUom));
 
-        recipes.add(recipe1);
+        recipes.add(guacRecipe);
 
-        Recipe recipe2 = new Recipe();
-        recipe2.setDescription("Spicy Grilled Chicken Tacos");
-        recipe2.setPrepTime(20);
-        recipe2.setCookTime(30);
-        recipe2.setServings(4);
-        recipe2.setDifficulty(Difficulty.EASY);
-        recipe2.setSources("Simply Recipes");
-        recipe2.setUrl("https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
-        recipe2.setDirections("Look for ancho chile powder with the Mexican ingredients at your grocery store, on buy it online. (If you can't find ancho chili powder, you replace the ancho chili, the oregano, and the cumin with 2 1/2 tablespoons regular chili powder, though the flavor won't be quite the same.)\n");
-        Notes recipe2Notes = new Notes();
-        recipe2Notes.setRecipeNotes("Blah");
-        recipe2Notes.setRecipe(recipe2);
-        recipe2.setNotes(recipe2Notes);
+        Recipe tacosRecipe = new Recipe();
+        tacosRecipe.setDescription("Spicy Grilled Chicken Tacos");
+        tacosRecipe.setPrepTime(20);
+        tacosRecipe.setCookTime(30);
+        tacosRecipe.setServings(4);
+        tacosRecipe.setDifficulty(Difficulty.EASY);
+        tacosRecipe.setSources("Simply Recipes");
+        tacosRecipe.setUrl("https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
+        tacosRecipe.setDirections("Look for ancho chile powder with the Mexican ingredients at your grocery store, on buy it online. (If you can't find ancho chili powder, you replace the ancho chili, the oregano, and the cumin with 2 1/2 tablespoons regular chili powder, though the flavor won't be quite the same.)\n");
+        Notes tacosRecipeNotes = new Notes();
+        tacosRecipeNotes.setRecipeNotes("Blah");
+        tacosRecipeNotes.setRecipe(tacosRecipe);
+        tacosRecipe.setNotes(tacosRecipeNotes);
 
-        recipe2.getIngredients().add(new Ingredient("ripe avocados", new BigDecimal(2), eachUom, recipe2 ));
-        recipe2.getIngredients().add(new Ingredient("Kosher salt", new BigDecimal("0.5"), teaspoonUom, recipe2));
-        recipe2.getIngredients().add(new Ingredient("fresh lime juice or lemon juice", new BigDecimal("2"), tablespoonUom, recipe2));
+        tacosRecipe.getIngredients().add(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
+        tacosRecipe.getIngredients().add(new Ingredient("Kosher salt", new BigDecimal("0.5"), teaspoonUom));
+        tacosRecipe.getIngredients().add(new Ingredient("fresh lime juice or lemon juice", new BigDecimal("2"), tablespoonUom));
 
-        recipes.add(recipe2);
+        recipes.add(tacosRecipe);
 
         System.out.println("Loaded Recipes....");
 
