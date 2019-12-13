@@ -12,8 +12,6 @@ import static org.mockito.Mockito.*;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.*;
-
 public class RecipeServiceImplTest {
 
     RecipeServiceImpl recipeService;
