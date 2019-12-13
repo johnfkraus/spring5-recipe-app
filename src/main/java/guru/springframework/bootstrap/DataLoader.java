@@ -97,6 +97,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         guacRecipe.getIngredients().add(new Ingredient("Kosher salt", new BigDecimal("0.5"), teaspoonUom));
         guacRecipe.getIngredients().add(new Ingredient("fresh lime juice or lemon juice", new BigDecimal("2"), tablespoonUom));
 
+        System.out.println(guacRecipe);
         recipes.add(guacRecipe);
 
         Recipe tacosRecipe = new Recipe();
