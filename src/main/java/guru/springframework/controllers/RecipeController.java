@@ -1,16 +1,14 @@
 package guru.springframework.controllers;
 
-    import guru.springframework.domain.Category;
-    import guru.springframework.domain.UnitOfMeasure;
-    import guru.springframework.repositories.CategoryRepository;
-    import guru.springframework.repositories.RecipeRepository;
-    import guru.springframework.repositories.UnitOfMeasureRepository;
-    import org.springframework.stereotype.Controller;
-    import org.springframework.ui.Model;
-    import org.springframework.web.bind.annotation.RequestMapping;
+import guru.springframework.repositories.CategoryRepository;
+import guru.springframework.repositories.RecipeRepository;
+import guru.springframework.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-    import java.util.Optional;
-
+@Slf4j
 @Controller
 @RequestMapping("/recipes")
 public class RecipeController {
@@ -26,7 +24,7 @@ public class RecipeController {
     }
 
     @RequestMapping({"", "/", "/index", "/index.html"})
-    public String listRecipes(Model model){
+    public String listRecipes(Model model) {
         //Optional<Category> optionalCategory = categoryRepository.findByDescription("American");
         //Optional<UnitOfMeasure> optionalUnitOfMeasure = unitOfMeasureRepository.findByDescription("Teaspoon");
         //System.out.println("Category id is " + optionalCategory.get().getId() + ", " + optionalCategory.get().getDescription());
