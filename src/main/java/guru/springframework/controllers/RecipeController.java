@@ -1,8 +1,5 @@
 package guru.springframework.controllers;
 
-import guru.springframework.repositories.CategoryRepository;
-import guru.springframework.repositories.RecipeRepository;
-import guru.springframework.repositories.UnitOfMeasureRepository;
 import guru.springframework.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -33,7 +30,7 @@ public class RecipeController {
 
     //public RecipeController () {}
 
-//    @RequestMapping({"", "/", "/index", "/index.html"})
+    //    @RequestMapping({"", "/", "/index", "/index.html"})
 //    public String listRecipes(Model model) {
 //        //Optional<Category> optionalCategory = categoryRepository.findByDescription("American");
 //        //Optional<UnitOfMeasure> optionalUnitOfMeasure = unitOfMeasureRepository.findByDescription("Teaspoon");
