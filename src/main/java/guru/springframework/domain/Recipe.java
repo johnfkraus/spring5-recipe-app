@@ -1,7 +1,6 @@
 package guru.springframework.domain;
 
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -10,7 +9,15 @@ import java.util.Set;
 @Data
 @Entity
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder(builderClassName = "RecipeBuilder")
 public class Recipe {
+    // https://www.baeldung.com/lombok-builder-default-value
+    public static class RecipeBuilder {
+        private Set<Ingredient> ingredients = new HashSet<>();
+        private Set<Category> categories = new HashSet<>();
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

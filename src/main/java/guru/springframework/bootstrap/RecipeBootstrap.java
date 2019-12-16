@@ -103,13 +103,13 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         Category mexicanCategory = mexicanCategoryOptional.get();
 
         //Yummy Guac
-        Recipe guacRecipe = new Recipe();
-        guacRecipe.setDescription("Perfect Guacamole");
-        guacRecipe.setPrepTime(10);
-        guacRecipe.setCookTime(0);
-        guacRecipe.setServings(4);
-        guacRecipe.setDifficulty(Difficulty.EASY);
-        guacRecipe.setDirections("1 Cut avocado, remove flesh: Cut the avocados in half. Remove seed. Score the inside of the avocado with a blunt knife and scoop out the flesh with a spoon" +
+        Recipe guacRecipe = Recipe.builder()
+            .description("Perfect Guacamole")
+            .prepTime(10)
+            .cookTime(43)
+            .servings(4)
+            .difficulty(Difficulty.EASY)
+            .directions("1 Cut avocado, remove flesh: Cut the avocados in half. Remove seed. Score the inside of the avocado with a blunt knife and scoop out the flesh with a spoon" +
             "\n" +
             "2 Mash with a fork: Using a fork, roughly mash the avocado. (Don't overdo it! The guacamole should be a little chunky.)" +
             "\n" +
@@ -120,7 +120,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
             "Chilling tomatoes hurts their flavor, so if you want to add chopped tomato to your guacamole, add it just before serving.\n" +
             "\n" +
             "\n" +
-            "Read more: http://www.simplyrecipes.com/recipes/perfect_guacamole/#ixzz4jvpiV9Sd");
+            "Read more: http://www.simplyrecipes.com/recipes/perfect_guacamole/#ixzz4jvpiV9Sd")
+            .build();
 
         Notes guacNotes = new Notes();
         guacNotes.setRecipeNotes("For a very quick guacamole just take a 1/4 cup of salsa and mix it in with your mashed avocados.\n" +
@@ -150,14 +151,13 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         recipes.add(guacRecipe);
 
         //Yummy Tacos
-        Recipe tacosRecipe = new Recipe();
-        tacosRecipe.setDescription("Spicy Grilled Chicken Taco");
-        tacosRecipe.setCookTime(9);
-        tacosRecipe.setPrepTime(20);
-        tacosRecipe.setServings(6);
-        tacosRecipe.setDifficulty(Difficulty.MODERATE);
-
-        tacosRecipe.setDirections("1 Prepare a gas or charcoal grill for medium-high, direct heat.\n" +
+        Recipe tacosRecipe = Recipe.builder()
+        .description("Spicy Grilled Chicken Taco")
+        .cookTime(9)
+        .prepTime(20)
+        .servings(6)
+        .difficulty(Difficulty.MODERATE)
+        .directions("1 Prepare a gas or charcoal grill for medium-high, direct heat.\n" +
             "2 Make the marinade and coat the chicken: In a large bowl, stir together the chili powder, oregano, cumin, sugar, salt, garlic and orange zest. Stir in the orange juice and olive oil to make a loose paste. Add the chicken to the bowl and toss to coat all over.\n" +
             "Set aside to marinate while the grill heats and you prepare the rest of the toppings.\n" +
             "\n" +
@@ -168,7 +168,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
             "5 Assemble the tacos: Slice the chicken into strips. On each tortilla, place a small handful of arugula. Top with chicken slices, sliced avocado, radishes, tomatoes, and onion slices. Drizzle with the thinned sour cream. Serve with lime wedges.\n" +
             "\n" +
             "\n" +
-            "Read more: http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/#ixzz4jvtrAnNm");
+            "Read more: http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/#ixzz4jvtrAnNm")
+            .build();
 
         Notes tacoNotes = new Notes();
         tacoNotes.setRecipeNotes("We have a family motto and it is this: Everything goes better in a tortilla.\n" +

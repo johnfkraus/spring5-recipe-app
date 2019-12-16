@@ -6,11 +6,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
 
 public class RecipeServiceImplTest {
 
@@ -26,8 +30,20 @@ public class RecipeServiceImplTest {
     }
 
     @Test
+    public void getRecipeByIdTest() {
+        Recipe recipe = Recipe.builder().id(1L).build();
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        Recipe recipeReturned = recipeService.findById(1L);
+        assertNotNull("Null recipe received.", recipeReturned);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
+    }
+
+    @Test
     public void findAll() {
-        Recipe recipe = new Recipe();
+        Recipe recipe = Recipe.builder().build();
         HashSet recipesData = new HashSet();
         recipesData.add(recipe);
         when(recipeRepository.findAll()).thenReturn(recipesData);

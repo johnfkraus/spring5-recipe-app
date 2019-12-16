@@ -13,7 +13,8 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
           integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-          crossorigin="anonymous"></script>
+          crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
 
@@ -23,7 +24,6 @@
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h1 class="panel-title">Recipes List</h1>
-
         </div>
         <div class="panel-body">
           <div class="table-responsive" th:if="${not #lists.isEmpty(recipes)}">
@@ -36,25 +36,35 @@
                 <th>Servings</th>
                 <th>Prep Time</th>
                 <th>Cook Time</th>
-                <!--                <th>Directions</th>-->
+                <th>View</th>
               </tr>
               </thead>
 
               <tr th:remove="all"><!-- thymeleaf should remove -->
-                <td th:text="${recipe.id}">1</td>
-                <td th:text="${recipe.description}">description</td>
-                <td th:text="${recipe.servings}">servings</td>
-                <td th:text="${recipe.prepTime}">prep time</td>
-                <td th:text="${recipe.cookTime}">cook time</td>
-                <!--td th:text="${recipe.directions}">directions</td-->
+                <td>1</td>
+                <td>Goat Stew</td>
+                <td>7</td>
+                <td>10</td>
+                <td>3</td>
+                <td><a href="#">View</a></td>
               </tr>
+              <tr th:remove="all"><!-- thymeleaf should remove -->
+                <td>21</td>
+                <td>Raccoon Stew</td>
+                <td>23</td>
+                <td>99</td>
+                <td>9</td>
+                <td><a href="#">View</a></td>
+              </tr>
+
               <tr th:each="recipe : ${recipes}">
+                <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
                 <td th:text="${recipe.id}">1</td>
                 <td th:text="${recipe.description}">description</td>
                 <td th:text="${recipe.servings}">servings</td>
                 <td th:text="${recipe.prepTime}">prep time</td>
                 <td th:text="${recipe.cookTime}">cook time</td>
-                <!--                <td th:text="${recipe.directions}">directions</td>-->
+                <td><a href="#" th:href="@{'/recipe/show/' + ${recipe.id}}">View</a></td>
               </tr>
             </table>
           </div>

@@ -56,10 +56,11 @@ public class IndexControllerTest {
     public void getIndexPage() {
         // given
         Set<Recipe> recipes = new HashSet<>();
-        recipes.add(new Recipe());
+        recipes.add(Recipe.builder().build());
 
-        Recipe recipe2 = new Recipe();
-        recipe2.setId(4L);
+        Recipe recipe2 = Recipe.builder()
+            .id(4L)
+            .build();
         recipes.add(recipe2);
 
         when(recipeService.findAll()).thenReturn(recipes);
