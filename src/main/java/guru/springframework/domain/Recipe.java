@@ -8,7 +8,6 @@ import java.util.Set;
 
 @Data
 @Entity
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(builderClassName = "RecipeBuilder")
