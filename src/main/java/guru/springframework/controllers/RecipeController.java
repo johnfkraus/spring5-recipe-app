@@ -42,11 +42,12 @@ public class RecipeController {
 //        model.addAttribute("recipes", recipeRepository.findAll());
 //        return "recipes/index";
 //    }
-    @RequestMapping("/recipe/{id}/show/")
-    public String showById(@PathVariable String id, Model model) {
-        System.out.println("RecipeController showById");
+
+    @RequestMapping("/recipe/{id}/show")
+    public String showById(@PathVariable String id, Model model){
+
         model.addAttribute("recipe", recipeService.findById(Long.valueOf(id)));
-        return "recipe/show2";
+        return "recipe/show";
     }
 
     @RequestMapping("recipe/new")
@@ -61,12 +62,11 @@ public class RecipeController {
         return  "recipe/recipeform";
     }
 
-    @PostMapping
-    @RequestMapping("recipe")
-    public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
+    @PostMapping("recipe")
+    public String saveOrUpdate(@ModelAttribute RecipeCommand command){
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
-        return "redirect:/recipe/show/" + savedCommand.getId();
 
+        return "redirect:/recipe/" + savedCommand.getId() + "/show";
     }
-
+    
 }

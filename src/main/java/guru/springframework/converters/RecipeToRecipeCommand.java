@@ -36,7 +36,7 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
         command.setDifficulty(source.getDifficulty());
         command.setDirections(source.getDirections());
         command.setServings(source.getServings());
-        command.setSources(source.getSources());
+        command.setSource(source.getSource());
         command.setUrl(source.getUrl());
         command.setNotes(notesConverter.convert(source.getNotes()));
         if (source.getCategories() != null && source.getCategories().size() > 0) {

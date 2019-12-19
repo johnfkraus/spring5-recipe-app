@@ -11,4 +11,4 @@ INSERT INTO unit_of_measure (description) VALUES ('Ounce');
 INSERT INTO unit_of_measure (description) VALUES ('Dash');
 INSERT INTO unit_of_measure (description) VALUES ('Each');
 
--- # INSERT INTO recipe (description, prep_time, cook_time, servings, sources, url, directions) VALUES ('Perfect Guacamole', 'Unit');
+-- # INSERT INTO recipe (description, prep_time, cook_time, servings, source, url, directions) VALUES ('Perfect Guacamole', 'Unit');

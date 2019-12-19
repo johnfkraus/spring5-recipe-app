@@ -55,7 +55,7 @@ public class RecipeCommandToRecipeTest {
         recipeCommand.setDifficulty(DIFFICULTY);
         recipeCommand.setDirections(DIRECTIONS);
         recipeCommand.setServings(SERVINGS);
-        recipeCommand.setSources(SOURCE);
+        recipeCommand.setSource(SOURCE);
         recipeCommand.setUrl(URL);
 
         NotesCommand notes = new NotesCommand();
@@ -92,7 +92,7 @@ public class RecipeCommandToRecipeTest {
         assertEquals(DIFFICULTY, recipe.getDifficulty());
         assertEquals(DIRECTIONS, recipe.getDirections());
         assertEquals(SERVINGS, recipe.getServings());
-        assertEquals(SOURCE, recipe.getSources());
+        assertEquals(SOURCE, recipe.getSource());
         assertEquals(URL, recipe.getUrl());
         assertEquals(NOTES_ID, recipe.getNotes().getId());
         assertEquals(2, recipe.getCategories().size());
