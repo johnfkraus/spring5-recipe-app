@@ -44,16 +44,22 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
+    @Transactional
+    public RecipeCommand findCommandById(Long id) {
+        return recipeToRecipeCommand.convert(findById(id));
+    }
+
+    //@Override
     public Recipe save(Recipe object) {
         return null;
     }
 
-    @Override
+    //@Override
     public void delete(Recipe object) {
 
     }
 
-    @Override
+    //@Override
     public void deleteById(Long aLong) {
 
     }

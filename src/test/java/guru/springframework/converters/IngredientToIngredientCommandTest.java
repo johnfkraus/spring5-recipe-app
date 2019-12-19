@@ -1,9 +1,7 @@
 package guru.springframework.converters;
 
 import guru.springframework.commands.IngredientCommand;
-import guru.springframework.commands.NotesCommand;
 import guru.springframework.domain.Ingredient;
-import guru.springframework.domain.Recipe;
 import guru.springframework.domain.UnitOfMeasure;
 import org.junit.Before;
 import org.junit.Test;
@@ -53,11 +51,11 @@ public class IngredientToIngredientCommandTest {
         IngredientCommand command = converter.convert(ingredient);
         // then
         assertEquals(INGREDIENT_ID, command.getId());
-        assertNotNull(command.getUnitOfMeasure());
-        assertEquals(UOM_ID, command.getUnitOfMeasure().getId());
+        assertNotNull(command.getUom());
+        assertEquals(UOM_ID, command.getUom().getId());
         assertEquals(AMOUNT, command.getAmount());
         assertEquals(INGREDIENT_DESCRIPTION, command.getDescription());
-        assertEquals(UOM_DESCRIPTION, command.getUnitOfMeasure().getDescription());
+        assertEquals(UOM_DESCRIPTION, command.getUom().getDescription());
 
     }
     @Test
@@ -71,7 +69,7 @@ public class IngredientToIngredientCommandTest {
         // when
         IngredientCommand command = converter.convert(ingredient);
         // then
-        assertNull(command.getUnitOfMeasure());
+        assertNull(command.getUom());
         assertEquals(INGREDIENT_ID, command.getId());
         // assertNotNull(command.getUnitOfMeasure());
         //assertEquals(UOM_ID, command.getUnitOfMeasure().getId());
