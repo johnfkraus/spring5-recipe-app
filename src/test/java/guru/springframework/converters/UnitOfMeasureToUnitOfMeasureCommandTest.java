@@ -17,12 +17,11 @@ public class UnitOfMeasureToUnitOfMeasureCommandTest {
     public void setUp() throws Exception {
         converter = new UnitOfMeasureToUnitOfMeasureCommand();
     }
-
     @Test
     public void testNullParameter() {
         assertNull(converter.convert(null));
     }
-
+    @Test
     public void testEmptyObject() {
         converter.convert(new UnitOfMeasure());
     }
