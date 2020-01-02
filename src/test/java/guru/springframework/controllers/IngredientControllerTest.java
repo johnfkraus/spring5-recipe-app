@@ -51,14 +51,14 @@ public class IngredientControllerTest {
     public void testShowIngredient() throws Exception {
         // given
         IngredientCommand ingredientCommand = new IngredientCommand();
-        when(ingredientService.FindByRecipeIdAndIngredientId(anyLong(),anyLong())).thenReturn(ingredientCommand);
+        when(ingredientService.findByRecipeIdAndIngredientId(anyLong(),anyLong())).thenReturn(ingredientCommand);
         // when
         mockMvc.perform(get("/recipe/1/ingredient/2/show"))
             .andExpect(status().isOk())
             .andExpect(view().name("recipe/ingredient/show"))
             .andExpect(model().attributeExists("ingredient"));
         // then
-        verify(ingredientService, times(1)).FindByRecipeIdAndIngredientId(anyLong(), anyLong());
+        verify(ingredientService, times(1)).findByRecipeIdAndIngredientId(anyLong(), anyLong());
     }
 
 
