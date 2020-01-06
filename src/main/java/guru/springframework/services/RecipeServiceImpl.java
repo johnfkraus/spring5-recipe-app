@@ -51,14 +51,14 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     //@Override
-    public Recipe save(Recipe object) {
-        return null;
-    }
-
-    //@Override
-    public void delete(Recipe object) {
-
-    }
+//    public Recipe save(Recipe object) {
+//        return null;
+//    }
+//
+//    //@Override
+//    public void delete(Recipe object) {
+//
+//    }
 
     @Override
     public void deleteById(Long id) {
