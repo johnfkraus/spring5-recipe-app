@@ -99,4 +99,12 @@ public class IngredientServiceImpl implements IngredientService {
 
         //return null;
     }
+
+    @Override
+    public void deleteById(Long idToDelete, Long id) {
+
+
+
+
+    }
 }

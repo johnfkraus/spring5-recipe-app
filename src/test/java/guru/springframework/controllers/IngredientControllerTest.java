@@ -17,6 +17,7 @@ import java.util.HashSet;
 
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -124,5 +125,15 @@ public class IngredientControllerTest {
             .andExpect(status().is3xxRedirection())
             .andExpect(view().name("redirect:/recipe/2/ingredient/3/show"));
     }
+
+    @Test
+    public void testDeleteIngredient() throws Exception {
+        // then
+        mockMvc.perform(get("/recipe/2/ingredient/3/delete"))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(view().name("redirect:/recipe/2/ingredients"));
+        verify(ingredientService, times(1)).deleteById(anyLong(), anyLong());
+    }
+
 
 }
