@@ -51,7 +51,7 @@ public class IngredientServiceImpl implements IngredientService {
         // why not use IngredientCommandToIngredient converter class?
         Optional<Recipe> recipeOptional = recipeRepository.findById(command.getRecipeId());
         if(!recipeOptional.isPresent()) {
-            // to do - toss? error if not found
+            // todo - toss? error if not found
             log.error("Recipe not found for id = " + command.getRecipeId());
             return new IngredientCommand();
         } else {
@@ -70,16 +70,31 @@ public class IngredientServiceImpl implements IngredientService {
                     .findById(command.getUom().getId())
                     .orElseThrow(() -> new RuntimeException("NO UOM FOUND"))); // to do - make more elegant
             } else {
-                // add new ingredient
-                recipe.addIngredient(ingredientCommandToIngredient.convert(command));
+                // add new ingredient; make relationship both ways
+                //recipe.addIngredient(ingredientCommandToIngredient.convert(command));
+                Ingredient ingredient = ingredientCommandToIngredient.convert(command);
+                ingredient.setRecipe(recipe);
+                recipe.addIngredient(ingredient);
             }
             Recipe recipeSaved = recipeRepository.save(recipe);
-            // to do - check for fail
-            return ingredientToIngredientCommand.convert(recipeSaved.getIngredients().stream()
-            .filter(recipeIngredient -> recipeIngredient.getId().equals(command.getId()))
-            .findFirst()
-            .get());
 
+            Optional<Ingredient> savedIngredientOptional = recipeSaved.getIngredients()
+                .stream()
+                .filter(recipeIngredients -> recipeIngredients.getId().equals(command.getId()))
+                .findFirst();
+
+            // check by description
+            if (!savedIngredientOptional.isPresent()) {
+                // not totally save, but best guess; could be duplicate ingredients
+                savedIngredientOptional = recipeSaved.getIngredients()
+                    .stream()
+                    .filter(recipeIngredients -> recipeIngredients.getDescription().equals(command.getDescription()))
+                    .filter(recipeIngredients -> recipeIngredients.getAmount().equals(command.getAmount()))
+                    .filter(recipeIngredients -> recipeIngredients.getUom().getId().equals(command.getUom().getId()))
+                    .findFirst();
+            }
+            // todo - check for fail
+            return ingredientToIngredientCommand.convert(savedIngredientOptional.get());
         }
 
         //return null;
