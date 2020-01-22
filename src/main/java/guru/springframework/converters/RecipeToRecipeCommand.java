@@ -21,6 +21,7 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
         this.ingredientConverter = ingredientConverter;
         this.notesConverter = notesConverter;
     }
+
     @Synchronized
     @Nullable
     @Override
@@ -40,7 +41,7 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
         command.setUrl(source.getUrl());
         command.setNotes(notesConverter.convert(source.getNotes()));
         if (source.getCategories() != null && source.getCategories().size() > 0) {
-            source.getCategories().forEach((Category category ) -> command.getCategories().add(categoryConverter.convert(category)));
+            source.getCategories().forEach((Category category) -> command.getCategories().add(categoryConverter.convert(category)));
         }
         if (source.getIngredients() != null && source.getIngredients().size() > 0) {
             source.getIngredients().forEach((Ingredient ingredient) -> command.getIngredients().add(ingredientConverter.convert(ingredient)));

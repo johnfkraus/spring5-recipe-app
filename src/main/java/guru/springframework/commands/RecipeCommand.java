@@ -1,7 +1,9 @@
 package guru.springframework.commands;
 
-import guru.springframework.domain.*;
-import lombok.*;
+import guru.springframework.domain.Difficulty;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,7 +20,7 @@ public class RecipeCommand {
     private String source;
     private String url;
     private String directions;
-    private Byte[] image;
+    // private Byte[] image;
     private Difficulty difficulty;
     private NotesCommand notes;
     private Set<IngredientCommand> ingredients = new HashSet<>();

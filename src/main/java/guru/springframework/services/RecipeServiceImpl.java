@@ -27,18 +27,20 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Set<Recipe> findAll() { // aka getRecipes()
-        log.debug("I'm in the RecipeServiceImpl");
+    public Set<Recipe> getRecipes() {
+        log.debug("I'm in the service");
+
         Set<Recipe> recipeSet = new HashSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
         return recipeSet;
     }
 
     @Override
-    public Recipe findById(Long id) {
-        System.out.println("RecipeServiceImpl findById()");
-        Optional<Recipe> recipeOptional = recipeRepository.findById(id);
-        if(!recipeOptional.isPresent()) {
+    public Recipe findById(Long l) {
+
+        Optional<Recipe> recipeOptional = recipeRepository.findById(l);
+
+        if (!recipeOptional.isPresent()) {
             throw new RuntimeException("Recipe not found.");
         }
         return recipeOptional.get();
@@ -46,23 +48,8 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     @Transactional
-    public RecipeCommand findCommandById(Long id) {
-        return recipeToRecipeCommand.convert(findById(id));
-    }
-
-    //@Override
-//    public Recipe save(Recipe object) {
-//        return null;
-//    }
-//
-//    //@Override
-//    public void delete(Recipe object) {
-//
-//    }
-
-    @Override
-    public void deleteById(Long id) {
-        recipeRepository.deleteById(id);
+    public RecipeCommand findCommandById(Long l) {
+        return recipeToRecipeCommand.convert(findById(l));
     }
 
     @Override
@@ -70,9 +57,14 @@ public class RecipeServiceImpl implements RecipeService {
     public RecipeCommand saveRecipeCommand(RecipeCommand command) {
         // 'detachedRecipe' is still just a POJO, not a Hibernate object
         Recipe detachedRecipe = recipeCommandToRecipe.convert(command);
-        Recipe savedRecipe = recipeRepository.save(detachedRecipe);
-        log.debug("Saved RecipeId: " + savedRecipe.getId());
-        return recipeToRecipeCommand.convert(savedRecipe);
 
+        Recipe savedRecipe = recipeRepository.save(detachedRecipe);
+        log.debug("Saved RecipeId:" + savedRecipe.getId());
+        return recipeToRecipeCommand.convert(savedRecipe);
+    }
+
+    @Override
+    public void deleteById(Long idToDelete) {
+        recipeRepository.deleteById(idToDelete);
     }
 }

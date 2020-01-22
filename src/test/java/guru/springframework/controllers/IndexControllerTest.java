@@ -48,8 +48,9 @@ public class IndexControllerTest {
     }
 
     @Test
-    public void getIndexPage() {
-        // given
+    public void getIndexPage() throws Exception {
+
+        //given
         Set<Recipe> recipes = new HashSet<>();
         recipes.add(Recipe.builder().build());
 
@@ -58,7 +59,8 @@ public class IndexControllerTest {
             .build();
         recipes.add(recipe2);
 
-        when(recipeService.findAll()).thenReturn(recipes);
+        when(recipeService.getRecipes()).thenReturn(recipes);
+
         ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
 
         // when
@@ -66,7 +68,7 @@ public class IndexControllerTest {
 
         // then
         assertEquals("index", viewName);
-        verify(recipeService, times(1)).findAll();
+        verify(recipeService, times(1)).getRecipes();
         verify(model, times(1)).addAttribute(eq("recipes"), argumentCaptor.capture());
         Set<Recipe> setInController = argumentCaptor.getValue();
         assertEquals(2, setInController.size());

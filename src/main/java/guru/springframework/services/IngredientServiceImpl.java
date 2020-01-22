@@ -50,7 +50,7 @@ public class IngredientServiceImpl implements IngredientService {
     public IngredientCommand saveIngredientCommand(IngredientCommand command) {
         // why not use IngredientCommandToIngredient converter class?
         Optional<Recipe> recipeOptional = recipeRepository.findById(command.getRecipeId());
-        if(!recipeOptional.isPresent()) {
+        if (!recipeOptional.isPresent()) {
             // todo - toss? error if not found
             log.error("Recipe not found for id = " + command.getRecipeId());
             return new IngredientCommand();
@@ -104,14 +104,14 @@ public class IngredientServiceImpl implements IngredientService {
     public void deleteById(Long recipeId, Long idToDelete) {
         log.debug("Deleting ingredient " + recipeId + ":" + idToDelete);
         Optional<Recipe> recipeOptional = recipeRepository.findById(recipeId);
-        if(recipeOptional.isPresent()) {
+        if (recipeOptional.isPresent()) {
             Recipe recipe = recipeOptional.get();
             log.debug("Found recipe id = " + recipe.getId());
             Optional<Ingredient> ingredientOptional = recipe.getIngredients()
                 .stream()
                 .filter(ingredient -> ingredient.getId().equals(idToDelete))
                 .findFirst();
-            if(ingredientOptional.isPresent()) {
+            if (ingredientOptional.isPresent()) {
                 Ingredient ingredientToDelete = ingredientOptional.get();
                 log.debug("Found ingredient id = " + ingredientToDelete.getId());
                 ingredientToDelete.setRecipe(null);

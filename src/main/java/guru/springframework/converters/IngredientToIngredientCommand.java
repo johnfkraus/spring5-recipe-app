@@ -14,6 +14,7 @@ public class IngredientToIngredientCommand implements Converter<Ingredient, Ingr
     public IngredientToIngredientCommand(UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand) {
         this.unitOfMeasureToUnitOfMeasureCommand = unitOfMeasureToUnitOfMeasureCommand;
     }
+
     @Synchronized
     @Nullable
     @Override
