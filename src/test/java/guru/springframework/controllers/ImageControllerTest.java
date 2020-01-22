@@ -34,7 +34,7 @@ public class ImageControllerTest {
         controller = new ImageController(imageService, recipeService);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
-
+    @Test
     public void getImageForm() throws Exception {
         // given
         RecipeCommand command = new RecipeCommand();
@@ -46,7 +46,6 @@ public class ImageControllerTest {
             .andExpect(status().isOk())
             .andExpect(model().attributeExists("recipe"));
         verify(recipeService, times(1)).findCommandById(anyLong());
-
     }
 
     @Test
