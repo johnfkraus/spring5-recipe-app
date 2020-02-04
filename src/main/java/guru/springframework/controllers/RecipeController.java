@@ -84,7 +84,7 @@ public class RecipeController {
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
-
+/*
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(NumberFormatException.class)
     public ModelAndView numberFormatException(Exception exception) {
@@ -95,4 +95,6 @@ public class RecipeController {
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
+
+ */
 }
