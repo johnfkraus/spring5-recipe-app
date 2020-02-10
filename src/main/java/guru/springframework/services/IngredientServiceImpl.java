@@ -97,7 +97,6 @@ public class IngredientServiceImpl implements IngredientService {
             return ingredientToIngredientCommand.convert(savedIngredientOptional.get());
         }
 
-        //return null;
     }
 
     @Override
