@@ -17,3 +17,20 @@ In addition to pointing out, that this is an Annotation based Configuration, @Re
 
 @Controller -- stereotype for presentation layer (spring-mvc)
 
+## Okta notes
+
+https://dev-336446-admin.okta.com/admin/app/oidc_client/instance/0oa3y4407akF9gOWB4x6/#tab-general
+
+Client ID
+0oa3y4407akF9gOWB4x6
+
+Client Secret
+Nl_YK28UIb7xkAkYCw7_xeVNtVZ6Ym5uI-tlQzAO
+
+Org URL
+Self-dev-336446
+https://dev-336446-admin.okta.com
+https://dev-336446.okta.com
+Note: https://{yourOktaDomain} is different from your admin URL. Don’t include -admin in the value.
+When copying your Okta domain from the developer console, you can find the correct value in upper right corner of the dashboard.
+
